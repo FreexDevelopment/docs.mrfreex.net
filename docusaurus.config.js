@@ -15,7 +15,7 @@ const config = {
   favicon: 'img/favicon.ico',
   organizationName: 'FreexDevelopment', // Usually your GitHub org/user name.
   projectName: 'freexdevelopment.github.io', // Usually your repo name.
-  deploymentBranch: "deployed",
+  deploymentBranch: "gh-pages",
 
   presets: [
     [
