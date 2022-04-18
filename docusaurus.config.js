@@ -12,7 +12,7 @@ const config = {
   baseUrl: '/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
-  favicon: 'img/favicon.ico',
+  favicon: 'https://avatars.githubusercontent.com/u/86741222?s=200&v=4',
   organizationName: 'FreexDevelopment', // Usually your GitHub org/user name.
   projectName: 'freexdevelopment.github.io', // Usually your repo name.
   deploymentBranch: "gh-pages",
@@ -47,7 +47,7 @@ const config = {
         title: 'Freex Development',
         logo: {
           alt: 'Logo',
-          src: 'img/logo.svg',
+          src: 'https://avatars.githubusercontent.com/u/86741222?s=200&v=4',
         },
         items: [
           {
