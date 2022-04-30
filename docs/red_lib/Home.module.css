@@ -1,3 +1,4 @@
 .redLib {
-    height: 5vh;
+    max-height: 10vh;
+    text-align: left;
 }
