@@ -1,0 +1,10 @@
+.BackgroundButton {
+    display: flex;
+    width: min-content;
+    padding: 1vh;
+    text-align: center;
+}
+
+.BackgroundButton > svg {
+    
+}
