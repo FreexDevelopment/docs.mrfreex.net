@@ -7,7 +7,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: 'Freex Development',
-  tagline: 'Dinosaurs are cool',
+  tagline: 'Realistic scripts for your awesome server',
   url: 'https://docs.mrfreex.net',
   baseUrl: '/',
   onBrokenLinks: 'throw',

@@ -4,42 +4,41 @@ import styles from './styles.module.css';
 
 const FeatureList = [
   {
-    title: 'Easy to Use',
-    Svg: require('@site/static/img/undraw_docusaurus_mountain.svg').default,
+    title: 'Red Scripts',
+    Svg: require('@site/static/img/Red.svg').default,
     description: (
       <>
-        Docusaurus was designed from the ground up to be easily installed and
-        used to get your website up and running quickly.
+        Red is the prefix and the brand for the Development newest scripts. All of these scripts require the red_lib library.
       </>
     ),
   },
   {
-    title: 'Focus on What Matters',
-    Svg: require('@site/static/img/undraw_docusaurus_tree.svg').default,
+    title: 'Red Library',
+    Svg: require('@site/static/img/red_lib.svg').default,
     description: (
       <>
-        Docusaurus lets you focus on your docs, and we&apos;ll do the chores. Go
-        ahead and move your docs into the <code>docs</code> directory.
+        Red Library is a development library that simplifies the creation of scripts and avoids repeated code which would only lead to badly optimized scripts.<br/>
+        <code>One more resource, 20 times less code waste.</code>
       </>
     ),
   },
   {
-    title: 'Powered by React',
-    Svg: require('@site/static/img/undraw_docusaurus_react.svg').default,
+    title: 'FX Scripts',
+    Svg: require('@site/static/img/FX.png').default,
     description: (
       <>
-        Extend or customize your website layout by reusing React. Docusaurus can
-        be extended while reusing the same header and footer.
+        Legacy scripts built without the red library.
       </>
     ),
   },
 ];
 
 function Feature({Svg, title, description}) {
+  
   return (
     <div className={clsx('col col--4')}>
       <div className="text--center">
-        <Svg className={styles.featureSvg} role="img" />
+        { typeof Svg === "string" ? <img style={{ borderRadius: "50%" }} src={Svg} /> : <Svg className={styles.featureSvg} role="img" /> }
       </div>
       <div className="text--center padding-horiz--md">
         <h3>{title}</h3>
