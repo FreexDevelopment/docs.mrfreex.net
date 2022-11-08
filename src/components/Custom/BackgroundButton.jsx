@@ -4,11 +4,11 @@ import React from "react"
 import Style from '../../css/BackgroundButton.module.css'
 
 
-const BackgroundButton = (props) => {
-    return <div style={{background: props.color, verticalAlign: "middle", borderRadius: "15px", padding: "1vh 1vw"}} className={Style.BackgroundButton}>
-        <FontAwesomeIcon style={{ margin : "auto 1ch auto auto" }} icon={Icons[props.icon]} />
+const BackgroundButton = React.forwardRef((props, ref) => {
+    return <div {...props} ref={ref} style={{background: props.color, display: "flex", columnGap: "1ch", borderRadius:"15px", alignContent: "center"}} className={Style.BackgroundButton}>
+        <FontAwesomeIcon style={{ margin: "auto" }} icon={Icons[props.icon]} />
         { props.children }
     </div>
-}
+})
 
 export default BackgroundButton
