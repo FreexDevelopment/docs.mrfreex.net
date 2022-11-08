@@ -5,8 +5,8 @@ import Style from '../../css/BackgroundButton.module.css'
 
 
 const BackgroundButton = (props) => {
-    return <div style={{background: props.color}} className={Style.BackgroundButton}>
-        <FontAwesomeIcon icon={Icons[props.icon]} />
+    return <div style={{background: props.color, verticalAlign: "middle", borderRadius: "15px", padding: "1vh 1vw"}} className={Style.BackgroundButton}>
+        <FontAwesomeIcon style={{ margin : "auto 1ch auto auto" }} icon={Icons[props.icon]} />
         { props.children }
     </div>
 }
