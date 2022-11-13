@@ -7,7 +7,7 @@ import Style from '../../css/BackgroundButton.module.css'
 const BackgroundButton = React.forwardRef((props, ref) => {
     return <div {...props} ref={ref} style={{background: props.color, display: "flex", columnGap: "1ch", borderRadius:"15px", alignContent: "center"}} className={Style.BackgroundButton}>
         <FontAwesomeIcon style={{ margin: "auto" }} icon={Icons[props.icon]} />
-        { props.children }
+        <div style={{ "margin": "auto", "flexGrow" : "1" }}>{ props.children }</div>
     </div>
 })
 

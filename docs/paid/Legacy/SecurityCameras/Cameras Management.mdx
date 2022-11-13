@@ -1,0 +1,55 @@
+import TabletMenu from '@site/static/img/docs/cameras/tablet-menu.png';
+import CamView from '@site/static/img/docs/cameras/cam-view.png';
+import DeleteCamera from '@site/static/img/docs/cameras/delete-camera.png';
+import AccessPoints from '@site/static/img/docs/cameras/access-points.png'
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faWifi,faTrash } from '@fortawesome/free-solid-svg-icons'
+import { WithColor } from '@site/src/components/Custom/Misc.jsx'
+
+## How-To
+Security Cameras can be viewed by whoever possesses the tablet Item or from watching posts.<br/>
+When you interact with the item or with the viewing blip you will be prompted by a menu that shows all the zones you have authorization for.
+
+:::caution
+
+If you are not authorized to view any zone, the menu will not open, prompting a notification instead.
+
+:::
+
+<details>
+  <summary>Physical access points</summary>
+  <div>
+    <div>Access Points show in the form of markers</div>
+    <br />
+    <img src={AccessPoints} />
+  </div>
+</details>
+
+<img src={TabletMenu} />
+
+The <FontAwesomeIcon icon={faWifi} /> button, connects to the camera.
+
+<img src={CamView} />
+<br />
+<br />
+
+While hovering a camera, the <FontAwesomeIcon icon={faTrash} /> button shows. It is used to delete the camera.
+
+<img src={DeleteCamera} />
+<br />
+<br />
+
+## Information about cameras
+
+A camera status is described by the circle showing over the camera icon.
+
+
+When the circle is:
+
+- **<WithColor color="#AF1414">Red</WithColor>**, the camera has been broken and cannot be viewed (see "Repairing the cameras")
+- **<WithColor color="#FFB224">Yellow</WithColor>**, the camera is being repaired - it should display as repaired after a few minutes
+- **<WithColor color="#00AF49">Green</WithColor>**, the camera is working
+
+### Graph
+
+The graph resumes the cameras status by showing how many are working, broken or being repaired.

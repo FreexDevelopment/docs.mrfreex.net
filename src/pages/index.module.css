@@ -21,3 +21,9 @@
   align-items: center;
   justify-content: center;
 }
+
+.buttons > a {
+  background-color: #1D1D1D;
+  color: #fff !important;
+  border: none;
+}

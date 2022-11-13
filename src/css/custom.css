@@ -28,8 +28,13 @@
 }
 
 .heroBanner_src-pages-index-module {
-  background-color: #393939 !important;
+  background-color: #CC3028 !important;
 }
+
+.hero__title,.hero__subtitle {
+  color : #1D1D1D;
+}
+
 
 .docusaurus-highlight-code-line {
   background-color: rgba(0, 0, 0, 0.1);

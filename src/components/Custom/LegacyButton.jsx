@@ -27,10 +27,24 @@ const theme = createTheme({
 }
 });
 
+export const ButtonFlex = React.forwardRef((props,ref) => {
+  return <div style={{ "display" : "flex", "columnGap" : "2ch" }}>
+    {props.children}
+  </div>
+})
+
 export const LegacyButton = React.forwardRef((props,ref) => {
     return <ThemeProvider theme={theme}>
         <Tooltip className="tooltip" placement="top" title="Legacy products are not likely to receive updates anymore. Bug fixing is still guaranteed.">
             <BackgroundButton {...props} ref={ref} color="#ff8000" icon="faWarning">Legacy</BackgroundButton>
+        </Tooltip>
+    </ThemeProvider>
+})
+
+export const WIPButton = React.forwardRef((props,ref) => {
+    return <ThemeProvider theme={theme}>
+        <Tooltip className="tooltip" placement="top" title="This category of the wiki is still work in progress.">
+            <BackgroundButton {...props} ref={ref} color="#bc2b2b" icon="faPersonDigging">Work in Progress</BackgroundButton>
         </Tooltip>
     </ThemeProvider>
 })

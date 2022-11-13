@@ -1,10 +1,13 @@
 .BackgroundButton {
     display: flex;
-    width: min-content;
     padding: 1vh;
     text-align: center;
 }
 
 .BackgroundButton > svg {
     
+}
+
+img {
+    border-radius: 5px;
 }

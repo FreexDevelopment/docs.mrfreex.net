@@ -6,7 +6,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: 'Freex Development',
+  title: 'Red Scripts',
   tagline: 'Realistic scripts for your awesome server',
   url: 'https://docs.mrfreex.net',
   baseUrl: '/',
@@ -44,7 +44,7 @@ const config = {
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
       navbar: {
-        title: 'Freex Development',
+        title: 'Red Scripts',
         logo: {
           alt: 'Logo',
           src: 'https://avatars.githubusercontent.com/u/86741222?s=200&v=4',

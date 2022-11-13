@@ -1,0 +1,218 @@
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+
+
+Auth files represent the biggest challenge while configuring the script.
+If your environment matches the script defaults (uses a supported version of ESX or QB) then you probably don't need to edit these files.
+However, if you are having issues like notifications not showing up, nil variable error spamming and any weird error, you probably do need to edit them.
+
+:::info
+Auth files are meant to be an API that interacts with the script and supplies its independent core with the information it needs
+to behave correctly.
+:::
+
+:::note
+Auth files are located in the `/modules/public/` folder.
+:::
+
+## Client Side
+
+### InitFramework
+
+```lua title="(string) -> object"
+local initFramework = function(version)
+    ...
+    return core
+end
+```
+
+The job of this function is to return the Framework core.
+If your framework is different from QB or ESX you should change the content of this function to return
+the core object of your framework.
+
+### pDataLoop
+
+```lua title="() -> any"
+local pDataLoop = function()
+    ...
+end
+```
+
+This function is used to update the player data object when necessary.
+
+### GetAuth
+
+```lua title="() -> string"
+local GetAuth = function()
+    if PlayerData == nil or PlayerData.job == nil or PlayerData.job.name == nil then return end
+    return PlayerData.job.name -- In this case, for default reasons, it returns the job name
+end
+```
+
+*GetAuth* must return a string that matches the management parameter of the interested zones config,
+the script uses this function to determine wheter a player has access to a specific zone.
+In the above case (default code) we can see that it depends on the pDataLoop described before.
+
+### notify
+
+```lua title="(string) -> any"
+local notify = function(text)
+    local f = (FxCfg.options.useFramework == "ESX") and ESX.ShowNotification or QBCore.Functions.Notify
+    return f(text)
+end
+```
+
+This function does exactly what its name tells, it sends a notification with the given text.
+
+:::caution
+If you're using ESX double check that your version is new enough to support the used notification syntax
+:::
+
+:::note
+Make sure to edit this function if you are using a custom notification system
+:::
+
+### isAbleToRepair
+
+```lua title="(boolean) -> boolean"
+local isAbleToRepair = function(standard) -- Must return true in order for the player to be able to fix the cameras // The parameter is the standard auth ( player has a management role for the zone )
+    return standard
+end
+```
+
+This function is used to differentiate the view and delete permissions from the repair permissions.
+The parameter "standard" allows you to know wheter the player would be authorized to view them.
+
+:::note
+This function is meant to be used in RP servers to create a separate job that can repair cameras
+:::
+
+### drawInfo
+
+```lua title="(string, vector3) -> any"
+local drawInfo = function(text,coords) -- Used for drawing text in 3d, change to your liking
+    AddTextEntry('HelpText', text)
+    SetFloatingHelpTextWorldPosition(1, coords)
+    SetFloatingHelpTextStyle(1, 1, 2, -1, 3, 0)
+    BeginTextCommandDisplayHelp('HelpText')
+    EndTextCommandDisplayHelp(2, false, false, -1)
+end
+```
+
+As the comment suggests, this function handles the drawing of the blips for repairing or viewing the cameras.
+The default system uses the *HelpText* blip, a clean and built-in 3d marker.
+
+
+### hideUi
+
+```lua title="(boolean) -> any"
+local hideUi = function(show) 
+    ExecuteCommand("toggleui")
+end
+```
+
+This function is useful to hide other UIs when the cameras UI is active.
+The default code invokes the *toggleui* command, used in the *trew_hud_ui* resource.
+
+:::caution
+The `show` parameter is inverted. It is false when the UI should be visible, and false otherwise.
+:::
+
+### onCamBroken
+
+```lua title="(object, object, boolean) -> any"
+local onCamBroken = function(baseCfg,cameraCfg,hasAuth) -- hasAuth is true when the player has the permissions needed to view the camera
+    if hasAuth then
+        ...
+    end
+end
+```
+
+This function is an event handler triggered when a camera gets broken.
+It gets triggered on all clients and the function body decides wheter to show it to everyone or just the authorized
+players.
+
+Here's a description of the parameters: 
+
+- `baseCfg` : the config object for the zone the broken camera is in;
+- `cameraCfg` : the config object for the broken camera;
+- `hasAuth` : wheter the player would be authorized to view the camera (true) or not (false);
+
+## Server Side
+
+### Exposed Variables
+
+:::info
+Exposed variables are variables that are not local to the core scope and can be read by the auth_sv.lua script.
+:::
+
+These particular variables are used to trigger core functions whenever needed.
+
+**E.G.** : When the initFramework function registers the items, it calls the functions inside the `ItemCbs` object to trigger the wanted behaviour.
+
+```lua title="ItemCbs"
+{
+    "cameraItem" = function() ... end,
+    "itemtoView" = function() ... end
+}
+```
+
+This is currently the only exposed variable.
+
+- `cameraItem` : triggers the placement of a camera it takes the player id as first argument;
+- `itemtoView` : shows the tablet UI on a player.
+
+### initFramework
+
+(Same as client-side)
+
+```lua title="(string) -> object"
+local initFramework = function(version)
+    ...
+    return core
+end
+```
+
+The job of this function is to return the Framework core.
+If your framework is different from QB or ESX you should change the content of this function to return
+the core object of your framework.
+
+### removeItem
+
+```lua title="(string, number, number) -> any"
+local removeItem = function(item, q, source)
+    if FxCfg.options.useFramework == "ESX" then
+        local xp = ESX.GetPlayerFromId(source)
+        xp.removeInventoryItem(FxCfg.options.cameraItem, 1)
+    elseif FxCfg.options.useFramework == "QB" then
+        local p = QBCore.Functions.GetPlayer(source)
+        p.Functions.RemoveItem(FxCfg.options.cameraItem, 1, "")
+    end
+end
+```
+This function removes an item from the player inventory (usually the security camera item).
+
+Parameters :
+
+- `item` : The item name;
+- `q` : The quantity to remove;
+- `source` : The target's serverID.
+
+
+### notify
+
+
+```lua title="(string, number) -> any"
+local notify = function(text,pid)
+    TriggerClientEvent('esx:showNotification', pid, text)
+end
+```
+This function sends a notification to a player.
+
+Parameters : 
+
+- `text` : The notification body;
+- `pid` : The target's serverID.
+
+

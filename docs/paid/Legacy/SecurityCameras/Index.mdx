@@ -1,0 +1,32 @@
+---
+sidebar_position: 1
+---
+import { LegacyButton, WIPButton, ButtonFlex } from '@site/src/components/Custom/LegacyButton'
+import {SplitLine} from '@site/src/components/Custom/SplitLine'
+
+# Security Cameras
+
+<ButtonFlex>
+    <LegacyButton />
+    <WIPButton />
+</ButtonFlex>
+<SplitLine />
+
+Security Cameras is a realistic CCTV simulator in FiveM. It uses two items ( by default ) to place a security cameras and to manage them.
+
+## Features
+
+
+
+## Frequent Issues
+
+#### Config Errors
+
+```markdown title="Most common error"
+SCRIPT ERROR: ?:-1: attempt to index a nil value (field '?')
+```
+
+This error can be the result of different issues, the most common one is that there is a syntax error in the config file.
+Search for missing comas and double text indexes. For more information visit https://www.lua.org/pil/2.5.html (complete but hard to understand) or https://create.roblox.com/docs/scripting/luau/tables (very easy to understand).
+
+Suggest more Frequent Issues by opening a ticket on the [Red Scripts](https://discord.com/invite/2rYAP5naHy) discord (category "Docs Improvements").
