@@ -30,7 +30,7 @@ export default function Home() {
   return (
     <Layout
       title={`Homepage`}
-      description="Freex Development documentation website.">
+      description="Red Scripts documentation website.">
       <HomepageHeader />
       <main>
         <HomepageFeatures />

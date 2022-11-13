@@ -14,7 +14,7 @@ const config = {
   onBrokenMarkdownLinks: 'warn',
   favicon: 'https://avatars.githubusercontent.com/u/86741222?s=200&v=4',
   organizationName: 'FreexDevelopment', // Usually your GitHub org/user name.
-  projectName: 'freexdevelopment.github.io', // Usually your repo name.
+  projectName: 'docs.mrfreex.net', // Usually your repo name.
   deploymentBranch: "gh-pages",
 
   presets: [
@@ -92,7 +92,7 @@ const config = {
             ],
           }
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} FreexDevelopment (MrFreex#2443)`,
+        copyright: `Copyright © ${new Date().getFullYear()} Red Scripts (MrFreex#2443)`,
       },
       prism: {
         theme: lightCodeTheme,
