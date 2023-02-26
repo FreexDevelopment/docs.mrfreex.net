@@ -1,0 +1,35 @@
+import Button from '@site/src/components/Custom/BackgroundButton'
+import { ButtonFlex, WIPButton, ClientButton, ServerButton } from '@site/src/components/Custom/LegacyButton'
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import CodeBlock from '@theme/CodeBlock';
+
+
+<ButtonFlex>
+    <ClientButton />
+    <ServerButton />
+    <WIPButton />
+</ButtonFlex>
+
+### Description
+
+This function is used to register events without specifying the resource name for each event. 
+This way the code looks cleaner and you don't run into two repeated lines each time
+
+<Tabs>
+  <TabItem value="b" label="Before" default>
+    <CodeBlock className="language-lua">
+        RegisterNetEvent("red_lib:an-unusually-long-event-name")<br />
+        AddEventHandler("red_lib:an-unusually-long-event-name", function()
+            ...
+        end)
+    </CodeBlock>
+  </TabItem>
+  <TabItem value="a" label="After">
+    <CodeBlock className="language-lua">
+        Events.Register("my-event-name", function()
+        
+        end)
+    </CodeBlock>
+  </TabItem>
+</Tabs>
