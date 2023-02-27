@@ -33,22 +33,6 @@ export const ButtonFlex = React.forwardRef((props,ref) => {
   </div>
 })
 
-export const ServerButton = React.forwardRef((props,ref) => {
-  return <ThemeProvider theme={theme}>
-      <Tooltip className="tooltip" placement="top" title="This section is server-sided">
-          <BackgroundButton {...props} ref={ref} color="#2849cc" icon="faGears">Server</BackgroundButton>
-      </Tooltip>
-  </ThemeProvider>
-})
-
-export const ClientButton = React.forwardRef((props,ref) => {
-  return <ThemeProvider theme={theme}>
-      <Tooltip className="tooltip" placement="top" title="This section is client-sided">
-          <BackgroundButton {...props} ref={ref} color="#2830cc" icon="faUser">Client</BackgroundButton>
-      </Tooltip>
-  </ThemeProvider>
-})
-
 export const LegacyButton = React.forwardRef((props,ref) => {
     return <ThemeProvider theme={theme}>
         <Tooltip className="tooltip" placement="top" title="Legacy products are not likely to receive updates anymore. Bug fixing is still guaranteed.">
