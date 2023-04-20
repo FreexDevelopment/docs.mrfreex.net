@@ -1,0 +1,18 @@
+## Configuration
+
+If your server is set up correctly, you should just need to execute the "convert_to_db" command.
+The script will ready your database inserting the needed table. If you are having issues running the command, you may execute the SQL manually.
+
+## Switching to oxmysql
+Update 1.3.0 introduced the possibility to use oxmysql instead of saving data to JSON files.
+If you'd like to do so, set "useDatabase = true" in the config.lua file, restart the script and run the "convert_to_db" command from your server console.
+
+:::danger
+You cannot run the command from your client, you must execute it server side
+:::
+
+This command will convert your existing data to the database and will stop the script from updating the JSON files further on.
+
+:::danger
+Do not run the command more than once without emptying the database table
+:::
